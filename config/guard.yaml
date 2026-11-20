@@ -1,0 +1,7 @@
+# The plan guard: which ports are sensitive, what counts as AI-written, and when to ask a person.
+sensitive_ports: [22, 3389, 5432, 6379, 7233, 8233, 9090, 27017]
+public_ports: [80, 443]
+ai_trailer_names: [Claude, Copilot, Cursor, Gemini, Codex]
+risk: {delete: 3.0, iam: 2.0, network: 2.0}
+ai_review_risk: 2.0          # an AI-written change touching IAM, the network or a delete goes to a person
+review_risk: 6.0             # any change touching this much goes to a person

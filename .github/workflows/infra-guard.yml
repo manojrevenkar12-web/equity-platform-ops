@@ -1,0 +1,46 @@
+# On a pull request that touches infra/terraform: a speculative plan in Terraform Cloud, its JSON through the
+# plan guard, and the verdict as a required check. Block fails the check; review needs an approval from the
+# platform team (CODEOWNERS on infra/); apply passes. Without a Terraform Cloud token (forks, this demo repo)
+# the job says so and stops.
+name: infra-guard
+on:
+  pull_request:
+    paths: ["infra/terraform/**"]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  guard:
+    runs-on: ubuntu-24.04
+    env:
+      TF_TOKEN_app_terraform_io: ${{ secrets.TF_API_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - name: Terraform Cloud token present?
+        id: token
+        run: |
+          if [ -z "$TF_TOKEN_app_terraform_io" ]; then echo "No TF_API_TOKEN: skipping the plan."; echo "ok=false" >> "$GITHUB_OUTPUT"; else echo "ok=true" >> "$GITHUB_OUTPUT"; fi
+      - uses: hashicorp/setup-terraform@v3
+        if: steps.token.outputs.ok == 'true'
+        with: {terraform_wrapper: false}
+      - uses: actions/setup-python@v5
+        if: steps.token.outputs.ok == 'true'
+        with: {python-version: "3.13", cache: pip}
+      - name: speculative plan
+        if: steps.token.outputs.ok == 'true'
+        working-directory: infra/terraform
+        run: |
+          terraform init -input=false
+          terraform plan -input=false -out=plan.tfplan -var-file=environments/production.tfvars
+          terraform show -json plan.tfplan > ../../plan.json
+      - name: plan guard
+        if: steps.token.outputs.ok == 'true'
+        run: |
+          pip install -r requirements.txt
+          git log --format=%B origin/${{ github.base_ref }}..HEAD > commits.txt
+          set +e; python -m epo.guard plan.json --commit-messages commits.txt | tee verdict.txt; code=${PIPESTATUS[0]}; set -e
+          { echo '### Plan guard'; echo '```'; cat verdict.txt; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
+          if [ "$code" = 3 ]; then exit 1; fi

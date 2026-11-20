@@ -1,0 +1,33 @@
+# promtool test rules rules_test.yml - a sustained outage pages; a two-minute blip does not.
+rule_files: [rules.yml]
+evaluation_interval: 1m
+tests:
+  - interval: 1m
+    # 600 requests a minute for a day of history, then 5% failing for 90 minutes
+    input_series:
+      - series: 'trpc_requests_total'
+        values: '0+600x1440 864000+600x120'
+      - series: 'trpc_requests_total{code="INTERNAL_SERVER_ERROR"}'
+        values: '0+0x1440 0+30x90 2700+0x30'
+      - series: 'trpc_requests_slow_total'
+        values: '0+0x1560'
+    alert_rule_test:
+      - eval_time: 1510m
+        alertname: ApiAvailabilityBudgetBurn60m
+        exp_alerts:
+          - exp_labels: {severity: page, slo: api_availability, service: api}
+            exp_annotations:
+              summary: "api_availability: error budget burning at 14.4x over 60m"
+              runbook_url: https://github.com/manojrevenkar12-web/equity-platform-ops/blob/main/docs/runbooks/api_availability.md
+  - interval: 1m
+    input_series:
+      - series: 'trpc_requests_total'
+        values: '0+600x1440 864000+600x60'
+      - series: 'trpc_requests_total{code="INTERNAL_SERVER_ERROR"}'
+        values: '0+0x1440 0+30x2 60+0x58'
+      - series: 'trpc_requests_slow_total'
+        values: '0+0x1500'
+    alert_rule_test:
+      - eval_time: 1450m
+        alertname: ApiAvailabilityBudgetBurn60m
+        exp_alerts: []

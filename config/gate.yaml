@@ -1,0 +1,9 @@
+# What the platform must show on the held-out orgs, against the org as found.
+platform:
+  max_feedback_p90_share: 0.5        # PR feedback p90 at most half
+  max_flaky_red_share: 0.2           # red builds from flaky tests at most a fifth
+  max_main_broken_hours_per_week: 10 # selection may let a defect through; the hourly full run must catch it
+  max_pages_share: 0.5               # at most half the pages
+  min_detected_share: 0.9            # of page-worthy incidents
+  max_harmful_applied_share: 1.0     # no more harmful changes applied than when every change is reviewed
+  max_duplicate_grants: 0

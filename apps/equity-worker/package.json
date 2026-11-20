@@ -1,0 +1,29 @@
+{
+  "name": "equity-worker",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Vesting runs as Temporal workflows with idempotent MongoDB writes, and the tRPC API that starts them",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "vitest run",
+    "worker": "node dist/worker.js",
+    "api": "node dist/server.js"
+  },
+  "dependencies": {
+    "@temporalio/activity": "1.13.0",
+    "@temporalio/client": "1.13.0",
+    "@temporalio/worker": "1.13.0",
+    "@temporalio/workflow": "1.13.0",
+    "@trpc/server": "11.0.0",
+    "mongodb": "6.12.0",
+    "prom-client": "15.1.3",
+    "zod": "3.24.1"
+  },
+  "devDependencies": {
+    "@temporalio/testing": "1.13.0",
+    "@types/node": "22.10.2",
+    "typescript": "5.8.3",
+    "vitest": "2.1.8"
+  },
+  "packageManager": "pnpm@10.28.0"
+}

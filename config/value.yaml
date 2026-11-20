@@ -1,0 +1,8 @@
+# What outcomes cost in engineer time, for the headline: engineering hours lost per week.
+minutes_per_red_build: 15               # notice, look, re-run a build that failed on a flaky test
+engineers_blocked_by_broken_main: 0.5   # per hour main is broken (people waiting or rebasing)
+hours_per_page: 0.75
+extra_hours_after_hours_page: 1.0       # sleep and the next morning
+hours_per_false_block: 0.5
+engineer_hour_eur: 85
+wait_cost_share: 0.2                    # of each minute waiting for CI, the share lost to context switching

@@ -1,0 +1,18 @@
+[project]
+name = "equity-platform-ops"
+version = "0.1.0"
+requires-python = ">=3.12"
+description = "Platform for an equity-management product on GKE, measured on a simulated engineering org."
+
+[tool.ruff]
+line-length = 160
+target-version = "py312"
+exclude = ["web", "apps"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM", "RUF"]
+ignore = ["RUF001", "RUF002", "RUF003", "RUF005", "RUF012", "SIM108", "E741", "B023"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+filterwarnings = ["ignore::DeprecationWarning"]

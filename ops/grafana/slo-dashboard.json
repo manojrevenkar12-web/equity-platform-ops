@@ -1,0 +1,99 @@
+{
+  "title": "Equity platform SLOs",
+  "uid": "epo-slos",
+  "schemaVersion": 39,
+  "panels": [
+    {
+      "type": "stat",
+      "title": "api_availability: budget left this month",
+      "gridPos": {
+        "x": 0,
+        "y": 0,
+        "w": 8,
+        "h": 8
+      },
+      "targets": [
+        {
+          "expr": "1 - sum(increase(trpc_requests_total{code=~\"5..|INTERNAL_SERVER_ERROR\"}[30d])) / (sum(increase(trpc_requests_total[30d])) * 0.001)"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percentunit",
+          "min": 0,
+          "max": 1
+        }
+      }
+    },
+    {
+      "type": "timeseries",
+      "title": "api_availability: burn rate (1h and 6h)",
+      "gridPos": {
+        "x": 8,
+        "y": 0,
+        "w": 16,
+        "h": 8
+      },
+      "targets": [
+        {
+          "expr": "slo:api_availability:bad_60m / (60 * slo:api_availability:budget_per_minute)",
+          "legendFormat": "60m"
+        },
+        {
+          "expr": "slo:api_availability:bad_360m / (360 * slo:api_availability:budget_per_minute)",
+          "legendFormat": "360m"
+        }
+      ]
+    },
+    {
+      "type": "stat",
+      "title": "api_latency: budget left this month",
+      "gridPos": {
+        "x": 0,
+        "y": 8,
+        "w": 8,
+        "h": 8
+      },
+      "targets": [
+        {
+          "expr": "1 - sum(increase(trpc_requests_slow_total[30d])) / (sum(increase(trpc_requests_total[30d])) * 0.01)"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percentunit",
+          "min": 0,
+          "max": 1
+        }
+      }
+    },
+    {
+      "type": "timeseries",
+      "title": "api_latency: burn rate (1h and 6h)",
+      "gridPos": {
+        "x": 8,
+        "y": 8,
+        "w": 16,
+        "h": 8
+      },
+      "targets": [
+        {
+          "expr": "slo:api_latency:bad_60m / (60 * slo:api_latency:budget_per_minute)",
+          "legendFormat": "60m"
+        },
+        {
+          "expr": "slo:api_latency:bad_360m / (360 * slo:api_latency:budget_per_minute)",
+          "legendFormat": "360m"
+        }
+      ]
+    }
+  ],
+  "tags": [
+    "slo",
+    "generated"
+  ],
+  "time": {
+    "from": "now-7d",
+    "to": "now"
+  }
+}

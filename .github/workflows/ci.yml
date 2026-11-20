@@ -1,0 +1,123 @@
+name: ci
+on:
+  push:
+  pull_request:
+
+jobs:
+  python:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.13", cache: pip}
+      - run: pip install -r requirements-dev.txt
+      - run: ruff check .
+      - name: selection, flake detection, burn alerts, plan guard, jobs, service, invariants
+        run: python -m pytest
+      - name: the development orgs evaluated again give the committed reports
+        run: |
+          python -m epo.eval.cli evaluate
+          git diff --exit-code reports/dev.json reports/charts
+      - name: development gate; README and generated alert rules match
+        run: python -m epo.eval.cli gate --dev && python -m epo.eval.cli readme --check && python -m epo.eval.cli rules --check
+      - name: the held-out run happened once and is locked
+        run: test -f config/heldout.lock && test -f reports/heldout.json && ! python -m epo.eval.cli heldout
+      - name: the guard on the example plans gives the expected decisions
+        run: |
+          for x in routine:0 public_lb_443:2 db_open:3 replace_database:3; do
+            name=${x%%:*}; want=${x##*:}
+            set +e; python -m epo.guard infra/guard-examples/$name.json --commit-messages infra/guard-examples/$name.commits.txt; got=$?; set -e
+            test "$got" = "$want" || { echo "$name: exit $got, expected $want"; exit 1; }
+          done
+
+  worker:
+    runs-on: ubuntu-24.04
+    defaults:
+      run:
+        working-directory: apps/equity-worker
+    services:
+      mongo:
+        image: mongo:7.0
+        ports: ["27017:27017"]
+        options: >-
+          --health-cmd "mongosh --quiet --eval 'db.runCommand({ ping: 1 }).ok'"
+          --health-interval 5s --health-timeout 5s --health-retries 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with: {package_json_file: apps/equity-worker/package.json}
+      - uses: actions/setup-node@v4
+        with: {node-version: 22, cache: pnpm, cache-dependency-path: apps/equity-worker/pnpm-lock.yaml}
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build
+      - name: Temporal CLI dev server for the workflow tests
+        run: |
+          curl -sSfL https://github.com/temporalio/cli/releases/download/v1.4.1/temporal_cli_1.4.1_linux_amd64.tar.gz | tar xz -C /tmp
+          echo "TEMPORAL_CLI=/tmp/temporal" >> "$GITHUB_ENV"
+      - name: vesting schedule; a worker lost after its write vests nothing twice (real Temporal, real MongoDB)
+        run: pnpm test
+        env:
+          MONGO_URL: mongodb://localhost:27017
+
+  ops:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: promtool, kustomize and kubeconform
+        run: |
+          curl -sSfL https://github.com/prometheus/prometheus/releases/download/v3.5.0/prometheus-3.5.0.linux-amd64.tar.gz | tar xz
+          sudo cp prometheus-3.5.0.linux-amd64/promtool /usr/local/bin/
+          curl -sSfL "https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv5.4.3/kustomize_v5.4.3_linux_amd64.tar.gz" | tar xz
+          sudo cp kustomize /usr/local/bin/
+          curl -sSfL https://github.com/yannh/kubeconform/releases/download/v0.6.7/kubeconform-linux-amd64.tar.gz | tar xz
+          sudo cp kubeconform /usr/local/bin/
+      - name: burn-rate rules are valid; a 90-minute outage pages and a 2-minute blip does not
+        working-directory: ops/prometheus
+        run: promtool check rules rules.yml && promtool test rules rules_test.yml
+      - name: both region overlays build and validate
+        run: |
+          for r in zurich frankfurt; do
+            kustomize build deploy/k8s/overlays/$r > /tmp/$r.yaml
+            kubeconform -strict -summary /tmp/$r.yaml
+          done
+
+  terraform:
+    runs-on: ubuntu-24.04
+    defaults:
+      run:
+        working-directory: infra/terraform
+    steps:
+      - uses: actions/checkout@v4
+      - uses: hashicorp/setup-terraform@v3
+      - run: terraform fmt -check -recursive
+      - run: terraform init -backend=false
+      - run: terraform validate
+
+  web:
+    runs-on: ubuntu-24.04
+    defaults:
+      run:
+        working-directory: web
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.13", cache: pip}
+      - run: pip install -r ../requirements-dev.txt
+      - uses: pnpm/action-setup@v4
+        with: {package_json_file: web/package.json}
+      - uses: actions/setup-node@v4
+        with: {node-version: 22, cache: pnpm, cache-dependency-path: web/pnpm-lock.yaml}
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm exec playwright install --with-deps chromium
+      - run: pnpm build
+      - name: dashboard end to end, with axe
+        run: pnpm e2e
+
+  images:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: dashboard image
+        run: docker build -t epo-dashboard .
+      - name: worker and API image
+        run: docker build -t equity-worker apps/equity-worker

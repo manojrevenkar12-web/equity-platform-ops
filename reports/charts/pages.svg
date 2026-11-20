@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 420" font-family="Inter, system-ui, sans-serif" role="img" aria-label="Pages per week">
+<rect width="780" height="420" fill="#FCFCFB"/>
+<text x="20" y="28" font-size="15" font-weight="600" fill="#1F2430">Pages per week</text>
+<text x="20" y="46" font-size="12" fill="#5E6573">With 95% intervals over org-weeks</text>
+<text x="320" y="77" font-size="12" text-anchor="end" fill="#1F2430">As found</text>
+<rect x="330" y="67" width="332.6" height="14" rx="3" fill="#C2410C"/>
+<line x1="635.0" x2="691.9" y1="74" y2="74" stroke="#1F2430" stroke-width="1.5"/>
+<text x="699.9" y="78" font-size="11" fill="#5E6573">56.3 </text>
+<text x="320" y="103" font-size="12" text-anchor="end" fill="#1F2430">As found, but AI-written changes merge on green CI</text>
+<rect x="330" y="93" width="332.6" height="14" rx="3" fill="#00897B"/>
+<line x1="635.0" x2="691.9" y1="100" y2="100" stroke="#1F2430" stroke-width="1.5"/>
+<text x="699.9" y="104" font-size="11" fill="#5E6573">56.3 </text>
+<text x="320" y="129" font-size="12" text-anchor="end" fill="#1F2430">Platform, every test on every PR</text>
+<rect x="330" y="119" width="18.0" height="14" rx="3" fill="#A3A9A6"/>
+<line x1="342.8" x2="353.6" y1="126" y2="126" stroke="#1F2430" stroke-width="1.5"/>
+<text x="361.6" y="130" font-size="11" fill="#5E6573">3.0 </text>
+<text x="320" y="155" font-size="12" text-anchor="end" fill="#1F2430">Platform, 8 fixed shards</text>
+<rect x="330" y="145" width="18.0" height="14" rx="3" fill="#A3A9A6"/>
+<line x1="342.8" x2="353.6" y1="152" y2="152" stroke="#1F2430" stroke-width="1.5"/>
+<text x="361.6" y="156" font-size="11" fill="#5E6573">3.0 </text>
+<text x="320" y="181" font-size="12" text-anchor="end" fill="#1F2430">Platform, full run on main only at night</text>
+<rect x="330" y="171" width="18.0" height="14" rx="3" fill="#A3A9A6"/>
+<line x1="342.8" x2="353.6" y1="178" y2="178" stroke="#1F2430" stroke-width="1.5"/>
+<text x="361.6" y="182" font-size="11" fill="#5E6573">3.0 </text>
+<text x="320" y="207" font-size="12" text-anchor="end" fill="#1F2430">Platform, no flaky-test quarantine</text>
+<rect x="330" y="197" width="18.0" height="14" rx="3" fill="#A3A9A6"/>
+<line x1="342.8" x2="353.6" y1="204" y2="204" stroke="#1F2430" stroke-width="1.5"/>
+<text x="361.6" y="208" font-size="11" fill="#5E6573">3.0 </text>
+<text x="320" y="233" font-size="12" text-anchor="end" fill="#1F2430">Platform, threshold alerts on the SLO metrics</text>
+<rect x="330" y="223" width="100.9" height="14" rx="3" fill="#A3A9A6"/>
+<line x1="420.4" x2="441.3" y1="230" y2="230" stroke="#1F2430" stroke-width="1.5"/>
+<text x="449.3" y="234" font-size="11" fill="#5E6573">17.1 </text>
+<text x="320" y="259" font-size="12" text-anchor="end" fill="#1F2430">Platform, no grouping of pages</text>
+<rect x="330" y="249" width="24.1" height="14" rx="3" fill="#A3A9A6"/>
+<line x1="345.8" x2="363.5" y1="256" y2="256" stroke="#1F2430" stroke-width="1.5"/>
+<text x="371.5" y="260" font-size="11" fill="#5E6573">4.1 </text>
+<text x="320" y="285" font-size="12" text-anchor="end" fill="#1F2430">Platform, symptoms page as before</text>
+<rect x="330" y="275" width="176.5" height="14" rx="3" fill="#A3A9A6"/>
+<line x1="493.5" x2="520.3" y1="282" y2="282" stroke="#1F2430" stroke-width="1.5"/>
+<text x="528.3" y="286" font-size="11" fill="#5E6573">29.9 </text>
+<text x="320" y="311" font-size="12" text-anchor="end" fill="#1F2430">Platform, guard without the AI tier</text>
+<rect x="330" y="301" width="18.0" height="14" rx="3" fill="#A3A9A6"/>
+<line x1="342.8" x2="353.6" y1="308" y2="308" stroke="#1F2430" stroke-width="1.5"/>
+<text x="361.6" y="312" font-size="11" fill="#5E6573">3.0 </text>
+<text x="320" y="337" font-size="12" text-anchor="end" fill="#1F2430">Platform, durable jobs without idempotency keys</text>
+<rect x="330" y="327" width="18.0" height="14" rx="3" fill="#A3A9A6"/>
+<line x1="342.8" x2="353.6" y1="334" y2="334" stroke="#1F2430" stroke-width="1.5"/>
+<text x="361.6" y="338" font-size="11" fill="#5E6573">3.0 </text>
+<text x="320" y="363" font-size="12" text-anchor="end" fill="#1F2430">Platform, workers in one region</text>
+<rect x="330" y="353" width="18.0" height="14" rx="3" fill="#A3A9A6"/>
+<line x1="342.8" x2="353.6" y1="360" y2="360" stroke="#1F2430" stroke-width="1.5"/>
+<text x="361.6" y="364" font-size="11" fill="#5E6573">3.0 </text>
+<text x="320" y="389" font-size="12" text-anchor="end" fill="#1F2430" font-weight="600">Platform</text>
+<rect x="330" y="379" width="18.0" height="14" rx="3" fill="#1D4ED8"/>
+<line x1="342.8" x2="353.6" y1="386" y2="386" stroke="#1F2430" stroke-width="1.5"/>
+<text x="361.6" y="390" font-size="11" fill="#5E6573">3.0 </text>
+</svg>

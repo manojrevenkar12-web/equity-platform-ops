@@ -1,0 +1,681 @@
+{
+ "designs": {
+  "ai_on_green": {
+   "after_hours_pages_per_week": 37.708333333333336,
+   "detected_share": 1.0,
+   "down_minutes_per_month": 96.59722222222223,
+   "duplicate_grants": 8350,
+   "engineer_hours_per_week": 200.56511967920918,
+   "engineer_hours_vs_as_found": -6.950000000000017,
+   "engineer_hours_vs_as_found_ci": [
+    -7.5500000000000185,
+    -6.312500000000014
+   ],
+   "escaped_per_week": 0.0,
+   "escaped_share": 0.0,
+   "false_blocks_per_week": 0.0,
+   "false_pages_per_week": 47.541666666666664,
+   "feedback_p50": 37.73540884544296,
+   "feedback_p90": 71.60155052602018,
+   "flaky_red_ci": [
+    70.375,
+    88.959375
+   ],
+   "flaky_red_per_week": 79.25,
+   "harmful": 62,
+   "harmful_applied": 48,
+   "harmful_applied_per_month": 8.666666666666666,
+   "hours_parts": {
+    "broken_main": 0.0,
+    "change_review": 13.250000000000009,
+    "flaky_reds": 19.8125,
+    "job_repairs": 8.0,
+    "pages": 79.92708333333333,
+    "waiting_for_ci": 79.57553634587582
+   },
+   "hours_to_apply_median": 2.434646214061879,
+   "job_runs": 2256,
+   "label": "As found, but AI-written changes merge on green CI",
+   "late_runs": 124,
+   "main_broken_hours_per_week": 0.0,
+   "manual_hours_per_month": 34.666666666666664,
+   "minutes_to_page": 3.980769230769231,
+   "page_worthy": 52,
+   "pages_ci": [
+    51.62291666666667,
+    61.25104166666666
+   ],
+   "pages_per_week": 56.291666666666664,
+   "quarantined": 0,
+   "review_hours_per_week": 13.250000000000009,
+   "runner_eur_per_month": 3337.0037606953606,
+   "standby_eur_per_month": 0.0
+  },
+  "as_found": {
+   "after_hours_pages_per_week": 37.708333333333336,
+   "detected_share": 1.0,
+   "down_minutes_per_month": 96.59722222222223,
+   "duplicate_grants": 8350,
+   "engineer_hours_per_week": 207.5151196792092,
+   "engineer_hours_vs_as_found": 0.0,
+   "engineer_hours_vs_as_found_ci": [
+    0.0,
+    0.0
+   ],
+   "escaped_per_week": 0.0,
+   "escaped_share": 0.0,
+   "false_blocks_per_week": 0.0,
+   "false_pages_per_week": 47.541666666666664,
+   "feedback_p50": 37.73540884544296,
+   "feedback_p90": 71.60155052602018,
+   "flaky_red_ci": [
+    70.375,
+    88.959375
+   ],
+   "flaky_red_per_week": 79.25,
+   "harmful": 62,
+   "harmful_applied": 19,
+   "harmful_applied_per_month": 3.4305555555555554,
+   "hours_parts": {
+    "broken_main": 0.0,
+    "change_review": 20.200000000000028,
+    "flaky_reds": 19.8125,
+    "job_repairs": 8.0,
+    "pages": 79.92708333333333,
+    "waiting_for_ci": 79.57553634587582
+   },
+   "hours_to_apply_median": 5.063535678778944,
+   "job_runs": 2256,
+   "label": "As found: every test on 8 runners, threshold alerts, every change reviewed, cron jobs",
+   "late_runs": 124,
+   "main_broken_hours_per_week": 0.0,
+   "manual_hours_per_month": 34.666666666666664,
+   "minutes_to_page": 3.980769230769231,
+   "page_worthy": 52,
+   "pages_ci": [
+    51.62291666666667,
+    61.25104166666666
+   ],
+   "pages_per_week": 56.291666666666664,
+   "quarantined": 0,
+   "review_hours_per_week": 20.200000000000028,
+   "runner_eur_per_month": 3337.0037606953606,
+   "standby_eur_per_month": 0.0
+  },
+  "platform": {
+   "after_hours_pages_per_week": 1.0833333333333333,
+   "detected_share": 0.9807692307692307,
+   "down_minutes_per_month": 3.611111111111111,
+   "duplicate_grants": 0,
+   "engineer_hours_per_week": 23.320093486173345,
+   "engineer_hours_vs_as_found": -184.19502619303583,
+   "engineer_hours_vs_as_found_ci": [
+    -193.18986498878454,
+    -176.2096867990148
+   ],
+   "escaped_per_week": 2.875,
+   "escaped_share": 0.07135470527404343,
+   "false_blocks_per_week": 0.0,
+   "false_pages_per_week": 0.7916666666666666,
+   "feedback_p50": 7.453863489255382,
+   "feedback_p90": 7.958973294526246,
+   "flaky_red_ci": [
+    0.4583333333333333,
+    1.5
+   ],
+   "flaky_red_per_week": 0.9583333333333334,
+   "harmful": 62,
+   "harmful_applied": 1,
+   "harmful_applied_per_month": 0.18055555555555555,
+   "hours_parts": {
+    "broken_main": 2.4055432541226445,
+    "change_review": 4.5249999999999995,
+    "flaky_reds": 0.23958333333333334,
+    "job_repairs": 0.0,
+    "pages": 3.3645833333333335,
+    "waiting_for_ci": 12.785383565384036
+   },
+   "hours_to_apply_median": 0.3,
+   "job_runs": 2256,
+   "label": "Platform: selection and quarantine, budget burn with grouping, plan guard, durable idempotent jobs in two regions",
+   "late_runs": 0,
+   "main_broken_hours_per_week": 4.811086508245289,
+   "manual_hours_per_month": 0.0,
+   "minutes_to_page": 16.50980392156863,
+   "page_worthy": 52,
+   "pages_ci": [
+    2.1666666666666665,
+    4.0
+   ],
+   "pages_per_week": 3.0416666666666665,
+   "quarantined": 34,
+   "review_hours_per_week": 4.5249999999999995,
+   "runner_eur_per_month": 1152.0861351531776,
+   "standby_eur_per_month": 909.9999999999999
+  },
+  "platform_all_tests": {
+   "after_hours_pages_per_week": 1.0833333333333333,
+   "detected_share": 0.9807692307692307,
+   "down_minutes_per_month": 3.611111111111111,
+   "duplicate_grants": 0,
+   "engineer_hours_per_week": 28.413510674487423,
+   "engineer_hours_vs_as_found": -179.10160900472178,
+   "engineer_hours_vs_as_found_ci": [
+    -188.12537958249456,
+    -171.2345663599816
+   ],
+   "escaped_per_week": 0.041666666666666664,
+   "escaped_share": 0.001034126163391934,
+   "false_blocks_per_week": 0.0,
+   "false_pages_per_week": 0.7916666666666666,
+   "feedback_p50": 11.052565058204975,
+   "feedback_p90": 11.235315604825628,
+   "flaky_red_ci": [
+    0.5,
+    1.3333333333333333
+   ],
+   "flaky_red_per_week": 0.9166666666666666,
+   "harmful": 62,
+   "harmful_applied": 1,
+   "harmful_applied_per_month": 0.18055555555555555,
+   "hours_parts": {
+    "broken_main": 0.04305555555555555,
+    "change_review": 4.5249999999999995,
+    "flaky_reds": 0.22916666666666666,
+    "job_repairs": 0.0,
+    "pages": 3.3645833333333335,
+    "waiting_for_ci": 20.25170511893187
+   },
+   "hours_to_apply_median": 0.3,
+   "job_runs": 2256,
+   "label": "Platform, every test on every PR",
+   "late_runs": 0,
+   "main_broken_hours_per_week": 0.0861111111111111,
+   "manual_hours_per_month": 0.0,
+   "minutes_to_page": 16.50980392156863,
+   "page_worthy": 52,
+   "pages_ci": [
+    2.1666666666666665,
+    4.0
+   ],
+   "pages_per_week": 3.0416666666666665,
+   "quarantined": 38,
+   "review_hours_per_week": 4.5249999999999995,
+   "runner_eur_per_month": 3691.313910457427,
+   "standby_eur_per_month": 909.9999999999999
+  },
+  "platform_fixed_shards": {
+   "after_hours_pages_per_week": 1.0833333333333333,
+   "detected_share": 0.9807692307692307,
+   "down_minutes_per_month": 3.611111111111111,
+   "duplicate_grants": 0,
+   "engineer_hours_per_week": 35.31524540129052,
+   "engineer_hours_vs_as_found": -172.19987427791867,
+   "engineer_hours_vs_as_found_ci": [
+    -181.95007023351073,
+    -163.18119934118909
+   ],
+   "escaped_per_week": 2.875,
+   "escaped_share": 0.07135470527404343,
+   "false_blocks_per_week": 0.0,
+   "false_pages_per_week": 0.7916666666666666,
+   "feedback_p50": 10.37769138946725,
+   "feedback_p90": 29.364663820684246,
+   "flaky_red_ci": [
+    0.4583333333333333,
+    1.5
+   ],
+   "flaky_red_per_week": 0.9583333333333334,
+   "harmful": 62,
+   "harmful_applied": 1,
+   "harmful_applied_per_month": 0.18055555555555555,
+   "hours_parts": {
+    "broken_main": 2.550908283857664,
+    "change_review": 4.5249999999999995,
+    "flaky_reds": 0.23958333333333334,
+    "job_repairs": 0.0,
+    "pages": 3.3645833333333335,
+    "waiting_for_ci": 24.635170450766186
+   },
+   "hours_to_apply_median": 0.3,
+   "job_runs": 2256,
+   "label": "Platform, 8 fixed shards",
+   "late_runs": 0,
+   "main_broken_hours_per_week": 5.101816567715328,
+   "manual_hours_per_month": 0.0,
+   "minutes_to_page": 16.50980392156863,
+   "page_worthy": 52,
+   "pages_ci": [
+    2.1666666666666665,
+    4.0
+   ],
+   "pages_per_week": 3.0416666666666665,
+   "quarantined": 34,
+   "review_hours_per_week": 4.5249999999999995,
+   "runner_eur_per_month": 1287.9924684865107,
+   "standby_eur_per_month": 909.9999999999999
+  },
+  "platform_nightly_only": {
+   "after_hours_pages_per_week": 1.0833333333333333,
+   "detected_share": 0.9807692307692307,
+   "down_minutes_per_month": 3.611111111111111,
+   "duplicate_grants": 0,
+   "engineer_hours_per_week": 40.65342681950668,
+   "engineer_hours_vs_as_found": -166.8616928597025,
+   "engineer_hours_vs_as_found_ci": [
+    -177.0672763235538,
+    -157.98407796400969
+   ],
+   "escaped_per_week": 2.875,
+   "escaped_share": 0.07135470527404343,
+   "false_blocks_per_week": 0.0,
+   "false_pages_per_week": 0.7916666666666666,
+   "feedback_p50": 7.453863489255382,
+   "feedback_p90": 7.958973294526246,
+   "flaky_red_ci": [
+    0.4583333333333333,
+    1.5
+   ],
+   "flaky_red_per_week": 0.9583333333333334,
+   "harmful": 62,
+   "harmful_applied": 1,
+   "harmful_applied_per_month": 0.18055555555555555,
+   "hours_parts": {
+    "broken_main": 19.73887658745598,
+    "change_review": 4.5249999999999995,
+    "flaky_reds": 0.23958333333333334,
+    "job_repairs": 0.0,
+    "pages": 3.3645833333333335,
+    "waiting_for_ci": 12.785383565384036
+   },
+   "hours_to_apply_median": 0.3,
+   "job_runs": 2256,
+   "label": "Platform, full run on main only at night",
+   "late_runs": 0,
+   "main_broken_hours_per_week": 39.47775317491196,
+   "manual_hours_per_month": 0.0,
+   "minutes_to_page": 16.50980392156863,
+   "page_worthy": 52,
+   "pages_ci": [
+    2.1666666666666665,
+    4.0
+   ],
+   "pages_per_week": 3.0416666666666665,
+   "quarantined": 34,
+   "review_hours_per_week": 4.5249999999999995,
+   "runner_eur_per_month": 846.6339440740503,
+   "standby_eur_per_month": 909.9999999999999
+  },
+  "platform_no_grouping": {
+   "after_hours_pages_per_week": 1.2916666666666667,
+   "detected_share": 0.9807692307692307,
+   "down_minutes_per_month": 3.611111111111111,
+   "duplicate_grants": 0,
+   "engineer_hours_per_week": 24.309676819506677,
+   "engineer_hours_vs_as_found": -183.20544285970252,
+   "engineer_hours_vs_as_found_ci": [
+    -192.28871938587307,
+    -175.3709724268907
+   ],
+   "escaped_per_week": 2.875,
+   "escaped_share": 0.07135470527404343,
+   "false_blocks_per_week": 0.0,
+   "false_pages_per_week": 0.8333333333333334,
+   "feedback_p50": 7.453863489255382,
+   "feedback_p90": 7.958973294526246,
+   "flaky_red_ci": [
+    0.4583333333333333,
+    1.5
+   ],
+   "flaky_red_per_week": 0.9583333333333334,
+   "harmful": 62,
+   "harmful_applied": 1,
+   "harmful_applied_per_month": 0.18055555555555555,
+   "hours_parts": {
+    "broken_main": 2.4055432541226445,
+    "change_review": 4.5249999999999995,
+    "flaky_reds": 0.23958333333333334,
+    "job_repairs": 0.0,
+    "pages": 4.354166666666667,
+    "waiting_for_ci": 12.785383565384036
+   },
+   "hours_to_apply_median": 0.3,
+   "job_runs": 2256,
+   "label": "Platform, no grouping of pages",
+   "late_runs": 0,
+   "main_broken_hours_per_week": 4.811086508245289,
+   "manual_hours_per_month": 0.0,
+   "minutes_to_page": 16.50980392156863,
+   "page_worthy": 52,
+   "pages_ci": [
+    2.6666666666666665,
+    5.666666666666667
+   ],
+   "pages_per_week": 4.083333333333333,
+   "quarantined": 34,
+   "review_hours_per_week": 4.5249999999999995,
+   "runner_eur_per_month": 1152.0861351531776,
+   "standby_eur_per_month": 909.9999999999999
+  },
+  "platform_no_idempotency": {
+   "after_hours_pages_per_week": 1.0833333333333333,
+   "detected_share": 0.9807692307692307,
+   "down_minutes_per_month": 3.611111111111111,
+   "duplicate_grants": 2156,
+   "engineer_hours_per_week": 23.320093486173345,
+   "engineer_hours_vs_as_found": -184.19502619303583,
+   "engineer_hours_vs_as_found_ci": [
+    -193.18986498878454,
+    -176.2096867990148
+   ],
+   "escaped_per_week": 2.875,
+   "escaped_share": 0.07135470527404343,
+   "false_blocks_per_week": 0.0,
+   "false_pages_per_week": 0.7916666666666666,
+   "feedback_p50": 7.453863489255382,
+   "feedback_p90": 7.958973294526246,
+   "flaky_red_ci": [
+    0.4583333333333333,
+    1.5
+   ],
+   "flaky_red_per_week": 0.9583333333333334,
+   "harmful": 62,
+   "harmful_applied": 1,
+   "harmful_applied_per_month": 0.18055555555555555,
+   "hours_parts": {
+    "broken_main": 2.4055432541226445,
+    "change_review": 4.5249999999999995,
+    "flaky_reds": 0.23958333333333334,
+    "job_repairs": 0.0,
+    "pages": 3.3645833333333335,
+    "waiting_for_ci": 12.785383565384036
+   },
+   "hours_to_apply_median": 0.3,
+   "job_runs": 2256,
+   "label": "Platform, durable jobs without idempotency keys",
+   "late_runs": 0,
+   "main_broken_hours_per_week": 4.811086508245289,
+   "manual_hours_per_month": 0.0,
+   "minutes_to_page": 16.50980392156863,
+   "page_worthy": 52,
+   "pages_ci": [
+    2.1666666666666665,
+    4.0
+   ],
+   "pages_per_week": 3.0416666666666665,
+   "quarantined": 34,
+   "review_hours_per_week": 4.5249999999999995,
+   "runner_eur_per_month": 1152.0861351531776,
+   "standby_eur_per_month": 909.9999999999999
+  },
+  "platform_no_quarantine": {
+   "after_hours_pages_per_week": 1.0833333333333333,
+   "detected_share": 0.9807692307692307,
+   "down_minutes_per_month": 3.611111111111111,
+   "duplicate_grants": 0,
+   "engineer_hours_per_week": 27.989273349374212,
+   "engineer_hours_vs_as_found": -179.525846329835,
+   "engineer_hours_vs_as_found_ci": [
+    -188.46829050859114,
+    -171.50046885481453
+   ],
+   "escaped_per_week": 2.8333333333333335,
+   "escaped_share": 0.0703205791106515,
+   "false_blocks_per_week": 0.0,
+   "false_pages_per_week": 0.7916666666666666,
+   "feedback_p50": 7.461292064594679,
+   "feedback_p90": 7.983150565605351,
+   "flaky_red_ci": [
+    14.625,
+    21.583333333333332
+   ],
+   "flaky_red_per_week": 18.0,
+   "harmful": 62,
+   "harmful_applied": 1,
+   "harmful_applied_per_month": 0.18055555555555555,
+   "hours_parts": {
+    "broken_main": 2.375566899419378,
+    "change_review": 4.5249999999999995,
+    "flaky_reds": 4.5,
+    "job_repairs": 0.0,
+    "pages": 3.3645833333333335,
+    "waiting_for_ci": 13.224123116621499
+   },
+   "hours_to_apply_median": 0.3,
+   "job_runs": 2256,
+   "label": "Platform, no flaky-test quarantine",
+   "late_runs": 0,
+   "main_broken_hours_per_week": 4.751133798838756,
+   "manual_hours_per_month": 0.0,
+   "minutes_to_page": 16.50980392156863,
+   "page_worthy": 52,
+   "pages_ci": [
+    2.1666666666666665,
+    4.0
+   ],
+   "pages_per_week": 3.0416666666666665,
+   "quarantined": 0,
+   "review_hours_per_week": 4.5249999999999995,
+   "runner_eur_per_month": 1201.6569239426722,
+   "standby_eur_per_month": 909.9999999999999
+  },
+  "platform_rules_only": {
+   "after_hours_pages_per_week": 1.0833333333333333,
+   "detected_share": 0.9807692307692307,
+   "down_minutes_per_month": 3.611111111111111,
+   "duplicate_grants": 0,
+   "engineer_hours_per_week": 19.720093486173344,
+   "engineer_hours_vs_as_found": -187.79502619303585,
+   "engineer_hours_vs_as_found_ci": [
+    -196.83485119783214,
+    -179.96927304512624
+   ],
+   "escaped_per_week": 2.875,
+   "escaped_share": 0.07135470527404343,
+   "false_blocks_per_week": 0.0,
+   "false_pages_per_week": 0.7916666666666666,
+   "feedback_p50": 7.453863489255382,
+   "feedback_p90": 7.958973294526246,
+   "flaky_red_ci": [
+    0.4583333333333333,
+    1.5
+   ],
+   "flaky_red_per_week": 0.9583333333333334,
+   "harmful": 62,
+   "harmful_applied": 2,
+   "harmful_applied_per_month": 0.3611111111111111,
+   "hours_parts": {
+    "broken_main": 2.4055432541226445,
+    "change_review": 0.9249999999999998,
+    "flaky_reds": 0.23958333333333334,
+    "job_repairs": 0.0,
+    "pages": 3.3645833333333335,
+    "waiting_for_ci": 12.785383565384036
+   },
+   "hours_to_apply_median": 0.3,
+   "job_runs": 2256,
+   "label": "Platform, guard without the AI tier",
+   "late_runs": 0,
+   "main_broken_hours_per_week": 4.811086508245289,
+   "manual_hours_per_month": 0.0,
+   "minutes_to_page": 16.50980392156863,
+   "page_worthy": 52,
+   "pages_ci": [
+    2.1666666666666665,
+    4.0
+   ],
+   "pages_per_week": 3.0416666666666665,
+   "quarantined": 34,
+   "review_hours_per_week": 0.9249999999999998,
+   "runner_eur_per_month": 1152.0861351531776,
+   "standby_eur_per_month": 909.9999999999999
+  },
+  "platform_single_region": {
+   "after_hours_pages_per_week": 1.0833333333333333,
+   "detected_share": 0.9807692307692307,
+   "down_minutes_per_month": 96.59722222222223,
+   "duplicate_grants": 0,
+   "engineer_hours_per_week": 23.320093486173345,
+   "engineer_hours_vs_as_found": -184.19502619303583,
+   "engineer_hours_vs_as_found_ci": [
+    -193.18986498878454,
+    -176.2096867990148
+   ],
+   "escaped_per_week": 2.875,
+   "escaped_share": 0.07135470527404343,
+   "false_blocks_per_week": 0.0,
+   "false_pages_per_week": 0.7916666666666666,
+   "feedback_p50": 7.453863489255382,
+   "feedback_p90": 7.958973294526246,
+   "flaky_red_ci": [
+    0.4583333333333333,
+    1.5
+   ],
+   "flaky_red_per_week": 0.9583333333333334,
+   "harmful": 62,
+   "harmful_applied": 1,
+   "harmful_applied_per_month": 0.18055555555555555,
+   "hours_parts": {
+    "broken_main": 2.4055432541226445,
+    "change_review": 4.5249999999999995,
+    "flaky_reds": 0.23958333333333334,
+    "job_repairs": 0.0,
+    "pages": 3.3645833333333335,
+    "waiting_for_ci": 12.785383565384036
+   },
+   "hours_to_apply_median": 0.3,
+   "job_runs": 2256,
+   "label": "Platform, workers in one region",
+   "late_runs": 0,
+   "main_broken_hours_per_week": 4.811086508245289,
+   "manual_hours_per_month": 0.0,
+   "minutes_to_page": 16.50980392156863,
+   "page_worthy": 52,
+   "pages_ci": [
+    2.1666666666666665,
+    4.0
+   ],
+   "pages_per_week": 3.0416666666666665,
+   "quarantined": 34,
+   "review_hours_per_week": 4.5249999999999995,
+   "runner_eur_per_month": 1152.0861351531776,
+   "standby_eur_per_month": 0.0
+  },
+  "platform_symptoms_page": {
+   "after_hours_pages_per_week": 20.416666666666668,
+   "detected_share": 1.0,
+   "down_minutes_per_month": 3.611111111111111,
+   "duplicate_grants": 0,
+   "engineer_hours_per_week": 62.778426819506684,
+   "engineer_hours_vs_as_found": -144.73669285970252,
+   "engineer_hours_vs_as_found_ci": [
+    -152.2793971345048,
+    -138.10784987052418
+   ],
+   "escaped_per_week": 2.875,
+   "escaped_share": 0.07135470527404343,
+   "false_blocks_per_week": 0.0,
+   "false_pages_per_week": 27.0,
+   "feedback_p50": 7.453863489255382,
+   "feedback_p90": 7.958973294526246,
+   "flaky_red_ci": [
+    0.4583333333333333,
+    1.5
+   ],
+   "flaky_red_per_week": 0.9583333333333334,
+   "harmful": 62,
+   "harmful_applied": 1,
+   "harmful_applied_per_month": 0.18055555555555555,
+   "hours_parts": {
+    "broken_main": 2.4055432541226445,
+    "change_review": 4.5249999999999995,
+    "flaky_reds": 0.23958333333333334,
+    "job_repairs": 0.0,
+    "pages": 42.822916666666664,
+    "waiting_for_ci": 12.785383565384036
+   },
+   "hours_to_apply_median": 0.3,
+   "job_runs": 2256,
+   "label": "Platform, symptoms page as before",
+   "late_runs": 0,
+   "main_broken_hours_per_week": 4.811086508245289,
+   "manual_hours_per_month": 0.0,
+   "minutes_to_page": 9.48076923076923,
+   "page_worthy": 52,
+   "pages_ci": [
+    27.665625000000002,
+    32.208333333333336
+   ],
+   "pages_per_week": 29.875,
+   "quarantined": 34,
+   "review_hours_per_week": 4.5249999999999995,
+   "runner_eur_per_month": 1152.0861351531776,
+   "standby_eur_per_month": 909.9999999999999
+  },
+  "platform_threshold_paging": {
+   "after_hours_pages_per_week": 11.5,
+   "detected_share": 0.9807692307692307,
+   "down_minutes_per_month": 3.611111111111111,
+   "duplicate_grants": 0,
+   "engineer_hours_per_week": 44.26801015284001,
+   "engineer_hours_vs_as_found": -163.24710952636917,
+   "engineer_hours_vs_as_found_ci": [
+    -171.57214593274153,
+    -156.01863786341332
+   ],
+   "escaped_per_week": 2.875,
+   "escaped_share": 0.07135470527404343,
+   "false_blocks_per_week": 0.0,
+   "false_pages_per_week": 14.791666666666666,
+   "feedback_p50": 7.453863489255382,
+   "feedback_p90": 7.958973294526246,
+   "flaky_red_ci": [
+    0.4583333333333333,
+    1.5
+   ],
+   "flaky_red_per_week": 0.9583333333333334,
+   "harmful": 62,
+   "harmful_applied": 1,
+   "harmful_applied_per_month": 0.18055555555555555,
+   "hours_parts": {
+    "broken_main": 2.4055432541226445,
+    "change_review": 4.5249999999999995,
+    "flaky_reds": 0.23958333333333334,
+    "job_repairs": 0.0,
+    "pages": 24.3125,
+    "waiting_for_ci": 12.785383565384036
+   },
+   "hours_to_apply_median": 0.3,
+   "job_runs": 2256,
+   "label": "Platform, threshold alerts on the SLO metrics",
+   "late_runs": 0,
+   "main_broken_hours_per_week": 4.811086508245289,
+   "manual_hours_per_month": 0.0,
+   "minutes_to_page": 4.627450980392157,
+   "page_worthy": 52,
+   "pages_ci": [
+    15.291666666666666,
+    18.834374999999994
+   ],
+   "pages_per_week": 17.083333333333332,
+   "quarantined": 34,
+   "review_hours_per_week": 4.5249999999999995,
+   "runner_eur_per_month": 1152.0861351531776,
+   "standby_eur_per_month": 909.9999999999999
+  }
+ },
+ "world": {
+  "changes": 1616,
+  "incidents": 87,
+  "job_runs": 2256,
+  "orgs": 3,
+  "page_worthy": 52,
+  "prs": 13159,
+  "seeds": [
+   3101,
+   3102,
+   3103
+  ],
+  "weeks": 8
+ }
+}

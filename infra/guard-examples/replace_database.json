@@ -1,0 +1,64 @@
+{
+ "format_version": "1.2",
+ "resource_changes": [
+  {
+   "address": "google_project_iam_member.sa_0",
+   "type": "google_project_iam_member",
+   "name": "sa_0",
+   "provider_name": "registry.terraform.io/hashicorp/google",
+   "change": {
+    "actions": [
+     "create"
+    ],
+    "before": null,
+    "after": {
+     "role": "roles/storage.objectViewer",
+     "member": "serviceAccount:reports-0@proj.iam.gserviceaccount.com"
+    }
+   }
+  },
+  {
+   "address": "mongodbatlas_cluster.ledger_99",
+   "type": "mongodbatlas_cluster",
+   "name": "ledger_99",
+   "provider_name": "registry.terraform.io/hashicorp/google",
+   "change": {
+    "actions": [
+     "delete",
+     "create"
+    ],
+    "before": {
+     "provider_region_name": "EUROPE_WEST_6"
+    },
+    "after": {
+     "provider_region_name": "EUROPE_WEST_3"
+    }
+   }
+  },
+  {
+   "address": "kubernetes_deployment.api_1",
+   "type": "kubernetes_deployment",
+   "name": "api_1",
+   "provider_name": "registry.terraform.io/hashicorp/google",
+   "change": {
+    "actions": [
+     "update"
+    ],
+    "before": {
+     "spec": [
+      {
+       "replicas": 3
+      }
+     ]
+    },
+    "after": {
+     "spec": [
+      {
+       "replicas": 4
+      }
+     ]
+    }
+   }
+  }
+ ]
+}

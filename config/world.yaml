@@ -1,0 +1,64 @@
+# The simulated engineering org and its production: the truth. Only epo/world reads this file (and heldout.yaml).
+seeds: [3101, 3102, 3103]         # development orgs
+weeks: 8
+
+ci:
+  packages: 60
+  tests: 3200
+  test_seconds_median: 1.5
+  test_seconds_sigma: 1.0          # lognormal: a long tail of slow integration tests
+  flaky_share: 0.008               # tests flaky from the start
+  flaky_rate: [0.005, 0.1]         # chance a flaky test fails on a good commit
+  new_flaky_per_week: 4            # tests that start to flake during the period
+  prs_per_weekday: 110
+  packages_per_pr: [1, 4]
+  defect_rate: 0.07                # a PR that breaks something
+  far_break_share: 0.08            # a defect that breaks tests in a package that does not depend on the touched one
+  runner_cost_per_minute_eur: 0.008
+  pipeline_overhead_min: 3.0       # checkout, install, build, before tests
+
+oncall:
+  services: [api, workers, mongodb, ingress]
+  regions: [zurich, frankfurt]
+  requests_per_minute: 900         # at the business-hours peak, across regions
+  baseline_error: 0.0006
+  baseline_slow: 0.004
+  incidents_per_week: 3.2
+  incident_kinds:                  # kind: [weight, minutes range, error rate range, slow rate range]
+    bad_release: [0.30, [8, 90], [0.02, 0.15], [0.0, 0.05]]
+    mongo_failover: [0.15, [1, 6], [0.05, 0.4], [0.05, 0.2]]
+    slow_dependency: [0.25, [20, 240], [0.0, 0.01], [0.06, 0.35]]
+    worker_backlog: [0.20, [30, 300], [0.0, 0.005], [0.02, 0.12]]
+    region_outage: [0.10, [20, 120], [0.3, 0.9], [0.1, 0.3]]
+  blips_per_day: 6                 # short spikes that resolve themselves
+  blip_minutes: [1, 3]
+  blip_error: [0.01, 0.06]
+  noise_symptoms_per_day: 4        # CPU, restarts, lag: symptoms with no customer impact
+
+changes:
+  per_week: 70
+  ai_share: 0.35                   # changes written with an AI assistant
+  harmful_rate_human: 0.025
+  harmful_rate_ai: 0.07
+  subtle_harmful_share: 0.3        # harmful in a way a plain rule misses (wide role to a group, port range)
+  benign_lookalike_rate: 0.12      # benign changes that look risky (0.0.0.0/0 on the public load balancer)
+  review_minutes: 18
+  review_wait_hours: [1, 6]
+  reviewer_catch: 0.8              # a fresh reviewer spots a harmful change
+  fatigue_per_review: 0.015        # each review that day lowers the next catch rate
+  reviews_per_engineer_day: 6
+  flagged_review_boost: 0.12       # a reviewer shown what the guard found catches more
+
+jobs:
+  companies: 320
+  grants_per_company: [5, 400]
+  vesting_day: 1                   # monthly vesting runs on the 1st (every 4 weeks here)
+  valuation_daily: true
+  report_deadlines_per_week: 14
+  worker_crash_per_run: 0.06       # a worker dies during a run
+  activity_crash_after_write: 0.35 # of crashes, the write had landed before the crash
+  manual_fix_hours: [6, 30]        # an engineer notices and fixes a broken cron run
+
+regions:
+  primary_node_month_eur: 2600
+  secondary_share: 0.35            # warm standby costs this share of the primary

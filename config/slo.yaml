@@ -1,0 +1,16 @@
+# SLOs for the Prometheus rules and the Grafana dashboard. Objectives match config/platform.yaml.
+slos:
+  - name: api_availability
+    service: api
+    objective: 0.999
+    bad: 'trpc_requests_total{code=~"5..|INTERNAL_SERVER_ERROR"}'
+    total: trpc_requests_total
+  - name: api_latency
+    service: api
+    objective: 0.99
+    bad: trpc_requests_slow_total        # counted by the API when a request takes longer than 1 s
+    total: trpc_requests_total
+symptoms:   # tickets, not pages
+  - {name: HighCpu, expr: 'avg by (pod) (rate(container_cpu_usage_seconds_total[5m])) > 0.9', for: 15m, summary: CPU above 90% for 15 minutes}
+  - {name: PodRestarts, expr: 'increase(kube_pod_container_status_restarts_total[15m]) > 3', for: 0m, summary: A pod restarted more than three times}
+  - {name: MongoReplicationLag, expr: 'mongodb_replset_member_replication_lag > 30', for: 10m, summary: Replication lag above 30 s}

@@ -1,0 +1,22 @@
+{
+ "format_version": "1.2",
+ "resource_changes": [
+  {
+   "address": "google_storage_bucket.exports_0",
+   "type": "google_storage_bucket",
+   "name": "exports_0",
+   "provider_name": "registry.terraform.io/hashicorp/google",
+   "change": {
+    "actions": [
+     "create"
+    ],
+    "before": null,
+    "after": {
+     "name": "exports-0",
+     "public_access_prevention": "enforced",
+     "uniform_bucket_level_access": true
+    }
+   }
+  }
+ ]
+}

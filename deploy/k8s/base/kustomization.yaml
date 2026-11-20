@@ -1,0 +1,19 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: equity
+labels:
+  - pairs:
+      app.kubernetes.io/part-of: equity-platform
+    includeSelectors: false
+resources:
+  - namespace.yaml
+  - serviceaccounts.yaml
+  - api.yaml
+  - worker.yaml
+  - networkpolicy.yaml
+configMapGenerator:
+  - name: equity
+    literals:
+      - TEMPORAL_NAMESPACE=equity-production.a1b2c
+      - TEMPORAL_ADDRESS=equity-production.a1b2c.tmprl.cloud:7233
+      - MONGO_DB=equity

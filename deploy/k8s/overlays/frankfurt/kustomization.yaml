@@ -1,0 +1,29 @@
+# Secondary region: workers active (they poll the same task queue), API warm at the floor so failover is a DNS
+# weight change, not a scale-up. See docs/runbooks/region_failover.md.
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - ../../base
+labels:
+  - pairs:
+      topology.equity/region: frankfurt
+    includeSelectors: false
+images:
+  - name: europe-docker.pkg.dev/equity-platform-prod/equity/equity-worker
+    newTag: replaced-by-ci-with-digest
+patches:
+  - target: {kind: HorizontalPodAutoscaler, name: api}
+    patch: |-
+      - op: replace
+        path: /spec/minReplicas
+        value: 2
+  - target: {kind: Deployment, name: api}
+    patch: |-
+      - op: replace
+        path: /spec/replicas
+        value: 2
+  - target: {kind: PodDisruptionBudget, name: api}
+    patch: |-
+      - op: replace
+        path: /spec/minAvailable
+        value: 1

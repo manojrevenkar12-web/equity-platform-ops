@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+node_modules/
+dist/
+web/test-results/
+web/playwright-report/
+.terraform/
+*.tfstate*
+*.tfplan
+plan.json

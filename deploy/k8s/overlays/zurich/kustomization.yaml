@@ -1,0 +1,12 @@
+# Primary region: serves the API and runs workers.
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - ../../base
+labels:
+  - pairs:
+      topology.equity/region: zurich
+    includeSelectors: false
+images:
+  - name: europe-docker.pkg.dev/equity-platform-prod/equity/equity-worker
+    newTag: replaced-by-ci-with-digest

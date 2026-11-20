@@ -1,0 +1,30 @@
+# The platform's settings. The world never reads this file.
+ci:
+  shard_target_seconds: 300        # aim for five-minute shards
+  max_shards: 16
+  fixed_shards: 8                  # the as-found runner pool
+  max_reruns: 2                    # a developer re-runs a red build at most twice
+  sprt_p0: 0.001                   # flip rate of a healthy test
+  sprt_p1: 0.03                    # flip rate worth quarantining
+  sprt_alpha: 0.01
+  sprt_beta: 0.05
+  fix_hours: 1.0                   # after the nightly run finds a broken main
+slo:
+  availability: 0.999
+  latency: 0.99
+  page_share: [0.02, 0.05]         # page-worthy: 2% of a monthly budget in an hour, or 5% in six hours
+thresholds:                        # the as-found alerts
+  error_ratio: 0.01
+  slow_ratio: 0.05
+paging:
+  group_minutes: 30
+  match_minutes: 15
+changes:
+  reviewers: 6
+  ci_hours: 0.3
+  fix_hours: 4.0
+jobs:
+  failover_minutes: 5              # Temporal namespace and Atlas fail over to the second region
+  retry_minutes: 2                 # activity heartbeat timeout, then retry on another worker
+  manual_rerun_hours: 1.5
+  grants_per_batch: 50

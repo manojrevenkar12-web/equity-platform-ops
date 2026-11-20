@@ -1,0 +1,62 @@
+{
+ "format_version": "1.2",
+ "resource_changes": [
+  {
+   "address": "google_compute_firewall.mongo_99",
+   "type": "google_compute_firewall",
+   "name": "mongo_99",
+   "provider_name": "registry.terraform.io/hashicorp/google",
+   "change": {
+    "actions": [
+     "create"
+    ],
+    "before": null,
+    "after": {
+     "source_ranges": [
+      "0.0.0.0/0"
+     ],
+     "allow": [
+      {
+       "protocol": "tcp",
+       "ports": [
+        "27017"
+       ]
+      }
+     ]
+    }
+   }
+  },
+  {
+   "address": "google_project_iam_member.sa_0",
+   "type": "google_project_iam_member",
+   "name": "sa_0",
+   "provider_name": "registry.terraform.io/hashicorp/google",
+   "change": {
+    "actions": [
+     "create"
+    ],
+    "before": null,
+    "after": {
+     "role": "roles/storage.objectViewer",
+     "member": "serviceAccount:reports-0@proj.iam.gserviceaccount.com"
+    }
+   }
+  },
+  {
+   "address": "google_project_iam_member.sa_1",
+   "type": "google_project_iam_member",
+   "name": "sa_1",
+   "provider_name": "registry.terraform.io/hashicorp/google",
+   "change": {
+    "actions": [
+     "create"
+    ],
+    "before": null,
+    "after": {
+     "role": "roles/storage.objectViewer",
+     "member": "serviceAccount:reports-1@proj.iam.gserviceaccount.com"
+    }
+   }
+  }
+ ]
+}
